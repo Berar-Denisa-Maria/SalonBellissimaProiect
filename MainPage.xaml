@@ -31,10 +31,10 @@
                 TextColor="White"
                 CornerRadius="20"
                 HorizontalOptions="Fill" />
-
-
-
+            <Label x:Name="notificareLabel" FontSize="20" TextColor="Red" HorizontalOptions="Center"/>
+            <Button Text="Vezi Programari" Clicked="OnNavigareProgramariClicked" BackgroundColor="Blue" TextColor="White" Margin="10"/>
         </VerticalStackLayout>
+        
     </ScrollView>
 
 </ContentPage>
