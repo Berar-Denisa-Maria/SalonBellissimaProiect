@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SalonBellissima.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SalonBellissima"
+    Shell.FlyoutBehavior="Disabled"
+    Title="SalonBellissima">
+
+    <TabBar>
+        <ShellContent Title="Salon" ContentTemplate="{DataTemplate local:MainPage}"
+ />
+        <ShellContent Title="Categorii" ContentTemplate="{DataTemplate local:ListPage}"
+ />
+        <ShellContent Title="Echipa noastra" ContentTemplate="{DataTemplate local:PaginaAngajat}" 
+ />
+        <ShellContent Title="Programari" ContentTemplate="{DataTemplate local:PaginaProgramare}"
+/>
+    </TabBar>
+
+</Shell>

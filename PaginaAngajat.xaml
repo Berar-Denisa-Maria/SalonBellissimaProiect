@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SalonBellissima.PaginaAngajat"
+             Title="PaginaAngajat">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Lista Angajaților Disponibili" FontSize="24" HorizontalOptions="Center" />
+
+        <ListView x:Name="angajatiListView"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Nume}" 
+                                   FontSize="18" 
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding Functie, StringFormat='Funcție: {0}'}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Adaugă Angajat" 
+                Clicked="OnAddAngajatClicked" 
+                BackgroundColor="Green" 
+                TextColor="White" 
+                Margin="10"/>
+    </VerticalStackLayout>
+</ContentPage>
