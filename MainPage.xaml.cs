@@ -17,14 +17,13 @@ namespace SalonBellissima
 
         private async void VerificaProgramari()
         {
-            // Se incarca programarile existente
             var programari = await App.Database.GetProgramariAsync();
             DateTime dataMaine = DateTime.Now.Date.AddDays(1);
 
-            // Se cauta programarea pentru ziua urmatoare
+           
             var programareMaine = programari.FirstOrDefault(p => p.DataOra.Date == dataMaine);
 
-            // Daca exista, se afiseaza notificarea
+          
             if (programareMaine != null)
             {
                 var serviciu = await App.Database.GetServiciuAsync();

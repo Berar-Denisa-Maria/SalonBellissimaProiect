@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SalonBellissima.PaginaRecenzii"
+             Title="Recenzii"
+             BackgroundColor="#f1eee9">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Adauga o Recenzie" FontSize="24" HorizontalOptions="Center" />
+
+        <Editor x:Name="recenzieEntry" 
+                Placeholder="Scrie o recenzie aici" 
+                Margin="10" 
+                HeightRequest="100"/>
+        
+        <Button Text="Adauga Recenzie"
+                Clicked="OnAdaugaRecenzieClicked"
+                BackgroundColor="#CD7F32"
+                TextColor="White"
+                Margin="10"/>
+
+        <Label Text="Recenzii existente"
+               FontSize="24" 
+               HorizontalOptions="Center" 
+               Margin="20,30,20,10" />
+
+        <ListView x:Name="recenziiListView" Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding TextRecenzie}" 
+                                   FontSize="18" 
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding DataRecenzie, StringFormat='Data: {0:dd/MM/yyyy HH:mm}'}" />
+
+                            <HorizontalStackLayout Margin="5">
+                                <Button Text="Actualizeaza"
+                                        Clicked="OnActualizeazaRecenzieClicked"
+                                        BackgroundColor="#CD7F32"
+                                        TextColor="White"
+                                        Margin="5"
+                                        CommandParameter="{Binding .}"/>
+
+                                <Button Text="Sterge"
+                                        Clicked="OnStergeRecenzieClicked"
+                                        BackgroundColor="Brown"
+                                        TextColor="White"
+                                        Margin="5"
+                                        CommandParameter="{Binding .}"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

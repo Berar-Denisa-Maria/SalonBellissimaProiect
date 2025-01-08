@@ -10,11 +10,13 @@
     <TabBar>
         <ShellContent Title="Salon" ContentTemplate="{DataTemplate local:MainPage}"
  />
-        <ShellContent Title="Categorii" ContentTemplate="{DataTemplate local:ListPage}"
+        <ShellContent Title="Servicii" ContentTemplate="{DataTemplate local:ListPage}"
  />
         <ShellContent Title="Echipa noastra" ContentTemplate="{DataTemplate local:PaginaAngajat}" 
  />
         <ShellContent Title="Programari" ContentTemplate="{DataTemplate local:PaginaProgramare}"
+/>
+        <ShellContent Title="Recenzii" ContentTemplate="{DataTemplate local:PaginaRecenzii}"
 />
     </TabBar>
 

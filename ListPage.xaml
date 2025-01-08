@@ -2,17 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SalonBellissima.ListPage"
-             Title="Lista Categoriilor ListPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Adaugă Categorie" Clicked="OnAddCategorieClicked"/>
-    </ContentPage.ToolbarItems>
-    
+             Title="Categorii Servicii"
+             BackgroundColor="#f1eee9">
+
     <VerticalStackLayout Padding="20">
         <Label Text="Lista Categoriilor" FontSize="24" HorizontalOptions="Center" />
-
+        
+        <Button Text="Adauga categorie" 
+        Clicked="OnAddCategorieClicked" 
+        CommandParameter="{Binding .}" 
+        BackgroundColor="#CD7F32"
+        TextColor="White" />
+        
         <ListView x:Name="categorieListView"
                   ItemSelected="OnCategorieSelected"
                   HasUnevenRows="True">
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -24,16 +29,16 @@
 
                             <StackLayout Orientation="Horizontal" Padding="10">
 
-                            <Button Text="Add" 
+                            <Button Text="Adauga" 
                                     Clicked="OnAddServiciuClicked" 
                                     CommandParameter="{Binding .}" 
-                                    BackgroundColor="Green"
+                                    BackgroundColor="#CD7F32"
                                     TextColor="White" />
 
-                            <Button Text="Șterge" 
+                            <Button Text="Sterge" 
                                     Clicked="OnCategorieDelete" 
                                     CommandParameter="{Binding .}" 
-                                    BackgroundColor="Red"
+                                    BackgroundColor="Brown"
                                     TextColor="White" />
                         </StackLayout>
 

@@ -49,4 +49,56 @@ public partial class PaginaProgramare : ContentPage
 
         await DisplayAlert("Succes", $"Programare adaugata pentru {serviciuSelectat.DenumireServiciu} la {dataSelectata}", "OK");
     }
+    private async void OnUpdateProgramareClicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        var programare = (Programare)button.CommandParameter;
+
+        string dataNouaString = await DisplayPromptAsync(
+            "Actualizeaza Programare",
+            "Introdu o noua data (YYYY-MM-DD):",
+            "OK",
+            "Anuleaza",
+            initialValue: programare.DataOra.ToString("yyyy-MM-dd"));
+
+        
+        if (!string.IsNullOrEmpty(dataNouaString) && DateTime.TryParse(dataNouaString, out DateTime dataSelectata))
+        {
+            string oraNouaString = await DisplayPromptAsync(
+                "Actualizeaza Ora",
+                "Introdu o noua ora (HH:mm):",
+                "OK",
+                "Anuleaza",
+                initialValue: programare.DataOra.ToString("HH:mm"));
+
+            
+            if (!string.IsNullOrEmpty(oraNouaString) && TimeSpan.TryParse(oraNouaString, out TimeSpan oraSelectata))
+            {
+                programare.DataOra = dataSelectata.Date + oraSelectata;
+                await App.Database.SaveProgramareAsync(programare);
+                LoadData();
+            }
+            else
+            {
+                await DisplayAlert("Eroare", "Ora introdusa nu este valida.", "OK");
+            }
+        }
+        else
+        {
+            await DisplayAlert("Eroare", "Data introdusa nu este valida.", "OK");
+        }
+    }
+
+        private async void OnDeleteProgramareClicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        var programare = (Programare)button.CommandParameter;
+
+        bool confirmare = await DisplayAlert("Stergere", "Sigur doresti sa stergi aceasta programare?", "Da", "Nu");
+        if (confirmare)
+        {
+            await App.Database.DeleteProgramareAsync(programare);
+            LoadData();
+        }
+    }
 }

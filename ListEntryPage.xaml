@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SalonBellissima.ListEntryPage"
-             Title="Servicii ListEntryPage">
+             Title="Servicii"
+             BackgroundColor="#f1eee9">
     <VerticalStackLayout Padding="20">
-        <Label Text="Servicii Disponibile" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Servicii Disponibile" 
+               FontSize="24" 
+               HorizontalOptions="Center" />
 
         <ListView x:Name="serviciiListView"
                   HasUnevenRows="True">
@@ -12,14 +15,27 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                           
                             <Label Text="{Binding DenumireServiciu}" 
                                    FontSize="18" 
                                    FontAttributes="Bold" />
 
                             <Label Text="{Binding Pret, StringFormat='Pret: {0:C}'}" />
                             <Label Text="{Binding DurataMinute, StringFormat='Durata: {0} minute'}" />
-                    
+                            <HorizontalStackLayout Margin="10,5,10,5">
+                             
+                                <Button Text="Actualizeaza" 
+                                        Clicked="OnUpdateServiciuClicked"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="#CD7F32" 
+                                        TextColor="White"/>
+
+                                <Button Text="Sterge" 
+                                        Clicked="OnDeleteServiciuClicked"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="Brown" 
+                                        TextColor="White"/>
+
+                            </HorizontalStackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

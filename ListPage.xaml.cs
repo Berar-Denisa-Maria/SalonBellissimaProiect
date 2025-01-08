@@ -28,7 +28,6 @@ public partial class ListPage : ContentPage
             LoadCategorii(); 
         }
     }
-    //daca dam click pe tuns putem sterge
     private async void OnCategorieDelete(object sender, EventArgs e)
     {
         var button = sender as Button;
@@ -36,7 +35,6 @@ public partial class ListPage : ContentPage
 
         if (categorie != null)
         {
-            // Confirmare de stergere
             bool confirm = await DisplayAlert("Confirmare",
                                               $"Sigur doriti sa stergeti categoria {categorie.DenumireCategorie}?",
                                               "Da",
@@ -44,10 +42,8 @@ public partial class ListPage : ContentPage
 
             if (confirm)
             {
-                // stergerea categoriei din baza de date
                 await App.Database.DeleteCategorieAsync(categorie);
 
-                // Reincarcarea listei de categorii
                 LoadCategorii();
             }
         }
@@ -59,7 +55,6 @@ public partial class ListPage : ContentPage
 
         if (categorie != null)
         {
-            // Solicita datele pentru serviciu
             string denumireServiciu = await DisplayPromptAsync("Adauga Serviciu", "Introduceti denumirea serviciului:");
             if (!string.IsNullOrWhiteSpace(denumireServiciu))
             {
@@ -69,19 +64,17 @@ public partial class ListPage : ContentPage
                     string durataServiciu = await DisplayPromptAsync("Adauga Serviciu", "Introduceti durata serviciului (minute):");
                     if (int.TryParse(durataServiciu, out int durata) && durata > 0)
                     {
-                        // Creeaza obiectul serviciu
+        
                         var serviciu = new Serviciu
                         {
                             DenumireServiciu = denumireServiciu,
                             Pret = pret,
                             DurataMinute = durata,
-                            CategorieId = categorie.Id // Asociaza categoria selectata
+                            CategorieId = categorie.Id 
                         };
 
-                        // Salveaza serviciul in baza de date
                         await App.Database.SaveServiciuAsync(serviciu);
 
-                        // Notificare ca serviciul a fost adaugat
                         await DisplayAlert("Succes", $"Serviciul {serviciu.DenumireServiciu} a fost adaugat!", "OK");
                     }
                     else
@@ -101,7 +94,6 @@ public partial class ListPage : ContentPage
         var categorie = e.SelectedItem as Categorie;
         if (categorie != null)
         {
-            // Navigheaza la pagina ListEntryPage si trimite categoria selectata
             await Navigation.PushAsync(new ListEntryPage(categorie));
         }
     }

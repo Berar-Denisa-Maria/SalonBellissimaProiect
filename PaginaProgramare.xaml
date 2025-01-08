@@ -3,24 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:System="clr-namespace:System;assembly=System.Runtime"
              x:Class="SalonBellissima.PaginaProgramare"
-             Title="Pagina Programare">
+             Title="Programari"
+             BackgroundColor="#f1eee9">
+    
     <VerticalStackLayout Padding="20">
-        <Label Text="Selecteaza Serviciul" FontSize="24" HorizontalOptions="Center" />
-        <Picker x:Name="serviciuPicker" Title="Alege un serviciu" Margin="10" />
+        <Label Text="Selecteaza Serviciul" 
+               FontSize="20" 
+               HorizontalOptions="Center" />
+        <Picker x:Name="serviciuPicker" 
+                Title="Alege un serviciu" 
+                Margin="10" />
 
-        <Label Text="Selecteaza Data" FontSize="18" HorizontalOptions="Center" />
-        <DatePicker x:Name="dataPicker" Margin="10" />
+        <Label Text="Selecteaza Data" 
+               FontSize="15" 
+               HorizontalOptions="Center" />
+        
+        <DatePicker x:Name="dataPicker" 
+                    Margin="10" />
 
-        <Label Text="Selecteaza Ora" FontSize="18" HorizontalOptions="Center" />
-        <TimePicker x:Name="oraPicker" Margin="10" />
+        <Label Text="Selecteaza Ora" 
+               FontSize="15" 
+               HorizontalOptions="Center" />
+        
+        <TimePicker x:Name="oraPicker" 
+                    Margin="10" />
 
-        <Button Text="Confirma Programarea" Clicked="OnConfirmareProgramareClicked" BackgroundColor="Green" TextColor="White" Margin="10" />
+        <Button Text="Confirma Programarea" 
+                Clicked="OnConfirmareProgramareClicked" 
+                BackgroundColor="#CD7F32" 
+                TextColor="White" 
+                Margin="10" />
 
-        <Label Text="Programarile existente" FontSize="24" HorizontalOptions="Center" Margin="20,30,20,10" />
+        <Label Text="Programarile mele" 
+               FontSize="20" 
+               Margin="20,30,20,10" />
+
         <ListView x:Name="programariListView" Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding DataOra}" />
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding DataOra}" FontSize="18" />
+
+                            <HorizontalStackLayout Margin="10,5,10,5">
+                                <Button Text="Actualizeaza"
+                                        Clicked="OnUpdateProgramareClicked"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="#CD7F32" 
+                                        TextColor="White"/>
+
+                                <Button Text="Sterge"
+                                        Clicked="OnDeleteProgramareClicked"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="Brown" 
+                                        TextColor="White"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
