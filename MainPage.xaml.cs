@@ -18,7 +18,7 @@ namespace SalonBellissima
         private async void VerificaProgramari()
         {
             var programari = await App.Database.GetProgramariAsync();
-            DateTime dataMaine = DateTime.Now.Date.AddDays(1);
+            DateTime dataMaine = DateTime.Now.Date.AddDays(1);  //stabilim data de maine
 
            
             var programareMaine = programari.FirstOrDefault(p => p.DataOra.Date == dataMaine);

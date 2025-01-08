@@ -22,7 +22,7 @@ namespace SalonBellissima.Data
             _database.CreateTableAsync<Recenzie>().Wait();
         }
 
-        // Operatii pentru Categorie
+        //operatii pentru Categorie
         public Task<List<Categorie>> GetCategorieAsync()
         {
             return _database.Table<Categorie>().ToListAsync();
@@ -48,7 +48,7 @@ namespace SalonBellissima.Data
             return _database.DeleteAsync(clist);
         }
 
-        // Operatii pentru Serviciu
+        //operatii pentru Serviciu
         public Task<List<Serviciu>> GetServiciuAsync()
         {
             return _database.Table<Serviciu>().ToListAsync();
@@ -81,7 +81,7 @@ namespace SalonBellissima.Data
                             .ToListAsync();
         }
 
-        // Operatii pentru Angajat
+        //operatii pentru Angajat
         public Task<List<Angajat>> GetAngajatiAsync()
         {
             return _database.Table<Angajat>().ToListAsync();
@@ -100,7 +100,7 @@ namespace SalonBellissima.Data
             return _database.DeleteAsync(angajat);
         }
 
-        // Operatii pentru Programare
+        //operatii pentru Programare
         public Task<List<Programare>> GetProgramariAsync()
         {
             return _database.Table<Programare>().ToListAsync();
@@ -119,7 +119,7 @@ namespace SalonBellissima.Data
             return _database.DeleteAsync(programare);
         }
 
-        // Operatii pentru Recenzie
+        //operatii pentru Recenzie
         public Task<List<Recenzie>> GetRecenziiAsync()
         {
             return _database.Table<Recenzie>().ToListAsync();
